@@ -54,29 +54,86 @@ class _CounterApp extends State<CounterApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Counter App')),
-      body: Column(
-        children: [
-          Text("Welcome to Counter App", style: TextStyle(fontSize: 20)),
-          SizedBox(height: 16),
-          Text("Result Counter: $counter"),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(onPressed: increment, icon: Icon(Icons.add)),
-              IconButton(onPressed: decrement, icon: Icon(Icons.remove)),
+      body: Center(
+        child: Container(
+          margin: EdgeInsets.all(16),
+          padding: EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.purple.shade100, Colors.deepPurple.shade100],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 8,
+                offset: Offset(4, 6),
+              ),
             ],
           ),
-
-          ElevatedButton(
-            onPressed: reset,
-            child: Text("Reset"),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Welcome to Counter App",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Arial',
+                  color: Colors.deepPurple,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(1, 1),
+                      blurRadius: 2,
+                      color: Colors.black26,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 16),
+              Text("Result Counter: $counter", style: TextStyle(fontSize: 20)),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: increment,
+                    label: Text(""),
+                    icon: Icon(Icons.add, color: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(16),
+                    ),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: decrement,
+                    label: Text(""),
+                    icon: Icon(Icons.remove, color: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(16),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: reset,
+                child: Text("Reset"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                  shape: StadiumBorder(),
+                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
